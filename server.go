@@ -9,7 +9,8 @@ import (
 )
 
 func main() {
-	config.Database().AutoMigrate(&models.Reference)
+	config.Database().AutoMigrate(&models.Reference{})
+	config.Database().Close()
 
 	e := echo.New()
 
@@ -17,7 +18,8 @@ func main() {
 		return c.String(200, "Hello World!")
 	})
 
-	e.GET("/short", handlers.GetAllUrl)
+	e.GET("/reference", handlers.GetAllReference)
+	e.POST("/reference", handlers.InsertReference)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

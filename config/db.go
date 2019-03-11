@@ -12,7 +12,5 @@ func Database() *gorm.DB {
 		panic("Failed to connect to the database")
 	}
 
-	defer db.Close()
-
 	return db
 }
