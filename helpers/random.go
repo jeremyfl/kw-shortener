@@ -2,6 +2,7 @@ package helpers
 
 import "math/rand"
 
+// GenerateRandomCode generate wth math
 func GenerateRandomCode() string {
 	len := 5
 

@@ -15,6 +15,15 @@ type Reference struct {
 
 var db = config.Database()
 
+// SelectAllReference ...
+func SelectAllReference(reference *[]Reference) (err error) {
+	if err = db.Find(reference).Error; err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // StoreReference directly to database
 // It returns error or not error (nil)
 func StoreReference(reference *Reference) (err error) {
