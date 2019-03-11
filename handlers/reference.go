@@ -17,7 +17,7 @@ func GetAllReference(c echo.Context) error {
 		return c.JSON(500, "Server may error")
 	}
 
-	return c.JSON(200, reference)
+	return c.JSON(200, helpers.Response{reference, "All References"})
 }
 
 // InserReference basic API to insert the reference
@@ -40,7 +40,5 @@ func InsertReference(c echo.Context) (err error) {
 		return c.JSON(500, "Sorry server error")
 	}
 
-	response := helpers.Response{r, "Reference created"}
-
-	return c.JSON(201, response)
+	return c.JSON(201, helpers.Response{r, "Reference created"})
 }
