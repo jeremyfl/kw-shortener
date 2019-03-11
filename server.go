@@ -19,7 +19,8 @@ func main() {
 	})
 
 	e.GET("/reference", handlers.GetAllReference)
-	e.POST("/reference", handlers.InsertReference)
+	e.GET("/reference/:id", handlers.ShowReference)
+	e.POST("/reference", handlers.StoreReference)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
