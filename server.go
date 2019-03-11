@@ -1,9 +1,9 @@
 package main
 
 import (
-	"shortener-service/config"
-	"shortener-service/handlers"
-	"shortener-service/models"
+	"kw-shortener/config"
+	"kw-shortener/handlers"
+	"kw-shortener/models"
 
 	"github.com/labstack/echo"
 )

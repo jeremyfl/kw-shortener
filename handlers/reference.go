@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"shortener-service/helpers" // Load helpers
-	"shortener-service/models"
+	"kw-shortener/helpers" // Load helpers
+	"kw-shortener/models"
 
 	"github.com/labstack/echo"
 )
