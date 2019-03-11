@@ -29,6 +29,9 @@ func InsertReference(c echo.Context) (err error) {
 		return c.JSON(500, "Sorry server error")
 	}
 
+	// Change the pointer of bind json to random code
+	r.Destination = helpers.GenerateRandomCode()
+
 	response := helpers.Response{r, "Reference created"}
 
 	return c.JSON(201, response)
