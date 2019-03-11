@@ -6,6 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// Reference basic struct model
 type Reference struct {
 	gorm.Model
 	Orig        string `json:"orig" xml:"orig" form:"orig" query:"orig"`
@@ -14,6 +15,8 @@ type Reference struct {
 
 var db = config.Database()
 
+// StoreReference directly to database
+// It returns error or not error (nil)
 func StoreReference(reference *Reference) (err error) {
 	if err = db.Create(reference).Error; err != nil {
 		return err
