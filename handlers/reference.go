@@ -14,7 +14,7 @@ func GetAllReference(c echo.Context) error {
 	err := models.SelectAllReference(&reference)
 
 	if err != nil {
-		return c.JSON(500, "Failed to get the data")
+		return c.JSON(404, helpers.Response{Message: "Record not found"})
 	}
 
 	return c.JSON(200, helpers.Response{reference, "All References"})
@@ -37,7 +37,7 @@ func StoreReference(c echo.Context) (err error) {
 	insertReference := models.InsertReference(r)
 
 	if insertReference != nil {
-		return c.JSON(500, "Failed to get the data")
+		return c.JSON(404, helpers.Response{Message: "Record not found"})
 	}
 
 	return c.JSON(201, helpers.Response{r, "Reference created"})
@@ -50,7 +50,7 @@ func ShowReference(c echo.Context) (err error) {
 	err = models.SelectReferenceById(&reference, c.Param("id"))
 
 	if err != nil {
-		return c.JSON(500, "Failed to get the data")
+		return c.JSON(404, helpers.Response{Message: "Record not found"})
 	}
 
 	return c.JSON(200, helpers.Response{reference, "Referance by ID"})
