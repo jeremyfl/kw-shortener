@@ -11,9 +11,7 @@ import (
 func GetAllReference(c echo.Context) error {
 	var reference []models.Reference
 
-	err := models.SelectAllReference(&reference)
-
-	if err != nil {
+	if err := models.SelectAllReference(&reference); err != nil {
 		return c.JSON(404, helpers.Response{Message: "Record not found"})
 	}
 
@@ -34,10 +32,8 @@ func StoreReference(c echo.Context) (err error) {
 	// Change the pointer of bind json to random code
 	r.Destination = helpers.GenerateRandomCode()
 
-	insertReference := models.InsertReference(r)
-
-	if insertReference != nil {
-		return c.JSON(404, helpers.Response{Message: "Record not found"})
+	if err = models.InsertReference(r); err != nil {
+		return c.JSON(500, helpers.Response{Message: "Cant create the record"})
 	}
 
 	return c.JSON(201, helpers.Response{r, "Reference created"})
