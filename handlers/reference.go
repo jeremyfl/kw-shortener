@@ -8,6 +8,8 @@ import (
 )
 
 // GetAllReference list of all url reference
+// It return 404 if the models failed to call database
+// It return 200 if the model found the record
 func GetAllReference(c echo.Context) error {
 	var reference []models.Reference
 
@@ -39,7 +41,9 @@ func StoreReference(c echo.Context) (err error) {
 	return c.JSON(201, helpers.Response{r, "Reference created"})
 }
 
-// ShowReferance
+// ShowReference basic handler to call single record by ID
+// It return 404 if the model failed to call database
+// It return 200 if the model found database
 func ShowReference(c echo.Context) (err error) {
 	var reference models.Reference
 

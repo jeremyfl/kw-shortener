@@ -3,6 +3,7 @@ package main
 import (
 	"kw-shortener/config"
 	"kw-shortener/handlers"
+	"kw-shortener/helpers"
 	"kw-shortener/models"
 
 	"github.com/labstack/echo"
@@ -15,7 +16,7 @@ func main() {
 	e := echo.New()
 
 	e.GET("/", func(c echo.Context) error {
-		return c.String(200, "Hello World!")
+		return c.JSON(200, helpers.Response{Message: "Hello world!"})
 	})
 
 	e.GET("/reference", handlers.GetAllReference)
