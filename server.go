@@ -19,6 +19,8 @@ func main() {
 		return c.JSON(200, helpers.Response{Message: "Hello world!"})
 	})
 
+	e.GET("/proto", DecodeProto)
+
 	e.GET("/reference", handlers.GetAllReference)
 	e.GET("/reference/:id", handlers.ShowReference)
 	e.POST("/reference", handlers.StoreReference)
